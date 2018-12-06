@@ -1,0 +1,16 @@
+WITH
+NEW_CTE 
+AS
+(SELECT 1 AS kol1, CONVERT( decimal(6,4), 1.2) AS kol2
+UNION ALL
+SELECT kol1*2 , CONVERT( decimal(6,4), kol2*kol2)
+FROM NEW_CTE
+
+WHERE kol1 < 16
+)
+
+
+SELECT * FROM NEW_CTE
+OPTION (MAXRECURSION 200);
+
+
